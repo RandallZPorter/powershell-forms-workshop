@@ -122,7 +122,7 @@ $button1 = newButton 30 30 90 40 'Hello!' {
 ```
 Our code now looks like this:
 
-![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/code.PNG "Custom Window")
+![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/code1.PNG "Custom Window")
 
 And our window should look something like this:
 
