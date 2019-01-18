@@ -38,18 +38,34 @@ Some simple things we may way to customize about our window include:
 - Background color or image
 - Window Title
 
-The following code will create an 800x600 pixel window, centered in the screen, with the title "PowerShell Workshop," and the same background color as this page.
+The following code will create an 800x600 pixel window, centered in the screen, with the title "PowerShell Workshop," and the same background color as this page. It will not be resizeable, and it will always be the topmost window.
 ```powershell
 $form = New-Object System.Windows.Forms.Form
-$form.Size = New-Object System.Drawing.Size(800,600)  
-$form.text = "PowerShell Workshop"
-$form.StartPosition = 'CenterScreen'
-$form.BackColor = "#1A1A1A" #Color names work too, including "black" and many other common colors
+$form.Width = 800                    #form width (in pixels)
+$form.Height = 600                   #form height (in pixels)
+#$form.Size = New-Object System.Drawing.Size(800,600)  #another way to set size
+$Form.TopMost = $true                #makes the window appear in front of all other windows
+$Form.MaximizeBox = $false           #disables the maximize button
+$Form.FormBorderStyle = 'Fixed3D'    #Fixed3D prevents the window from being resized
+$form.text = "PowerShell Workshop"   #the name to display in the title bar
+$form.StartPosition = 'CenterScreen' #where the window will appear
+$form.BackColor = "#1A1A1A"          #can also use names, such as "black"
 
 [void] $form.ShowDialog()
 ```
 These are just a few of the customization options available. You can make your window look however you want. Mine currently looks like this:
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/custom_window.PNG "Custom Window")
+
+Unfortunately, setting a picture as a background image is a little bit more difficult. We have to tell the script where our image is located. I used an absolute path for mine, but you can use relative paths if you want to. Unless your image is a perfect fit for your window, you may also want to control how it is positioned on the screen. Powershell accepts similar fit settings as Windows does for setting backgrounds: "Stretch," "Tile," and "Center."
+```powershell
+$imagePath = "c:\Users\s524409\Desktop\powershellTutorial\background.jpg"
+$Image = [system.drawing.image]::FromFile($imagePath)
+$form.BackgroundImage = $Image
+$form.BackgroundImageLayout = "Stretch"
+```
+I specified a Matrix-like image for my background. Now my window looks like this:
+
+![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/custom_background.PNG "Custom Window")
 
 ## 3. Adding Clickable Objects
 
