@@ -5,7 +5,7 @@ A short workshop to demonstrate the use of Windows forms with PowerShell
 This tutorial will cover the following topics:
 1. Setting up an environment
 1. Displaying an application window
-1. Adding clickable objects and events
+1. Adding clickable objects and events (We will focus mostly on buttons)
 
 ## 1. Setting up an Environment
 We will be doing this development in the Powershell Integrated Scripting Environment (ISE). The easiest way to get to it is by doing a start menu search for "powershell," then clicking on the "PowerShell ISE" result:
@@ -73,8 +73,8 @@ I specified a Matrix-like image for my background. Now my window looks like this
 Once you are happy with how your window looks, we can move on to learning how to add buttons, fields, and other things.
 
 
-## 3. Adding Clickable Objects
-There are several kinds of objects we can add to our window. Let's talk about them one-by-one.
+## 3. Adding Clickable Objects (Actually just buttons)
+There are several kinds of objects we can add to our window. Let's talk about some of them.
 
 ### Buttons
 We will look at buttons first. Every button has a few attributes. These are the most important:
@@ -127,5 +127,28 @@ Our code now looks like this:
 And our window should look something like this:
 
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/window_with_button.PNG "Custom Window")
+
+### Text Fields
+Adding text fields is very similar to our original code for adding buttons:
+```powershell
+$textBox = New-Object System.Windows.Forms.TextBox
+$textBox.Location = New-Object System.Drawing.Point(100, 100)
+$form.Controls.Add($textBox)
+```
+
+### Linking Buttons and Text Fields
+Let's do something useful with the objects on our screen. I'm going to turn mine into a base converter. First let's relocate and rename our objects. The code for my button and text box is now this:
+```powershell
+$button1 = newButton 320 100 90 40 'Convert' { 
+} ; $form.Controls.Add($button1) 
+
+$textBox = New-Object System.Windows.Forms.TextBox
+$textBox.Location = New-Object System.Drawing.Point(265, 150)
+$textBox.Width = 200
+$form.Controls.Add($textBox)
+```
+And my window now looks like this:
+
+![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/textbox_and_button.PNG "Custom Window")
 
 
