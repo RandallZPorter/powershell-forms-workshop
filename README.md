@@ -9,6 +9,8 @@ This tutorial will cover the following topics:
 1. Linking objects to scripted events
 
 ##1. Setting up an Environment
+We will be doing this development in the Powershell Integrated Scripting Environment (ISE). The easiest way to get to it is by doing a start menu search for "powershell," then clicking on the "PowerShell ISE" result.
+![alt text](/path/img.jpg "Title")
 
 ##2. Displaying an Application Window
 
