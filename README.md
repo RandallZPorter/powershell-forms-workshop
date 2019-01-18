@@ -122,8 +122,38 @@ $button1 = newButton 30 30 90 40 'Hello!' {
 ```
 Our code now looks like this:
 
-![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/code1.PNG "Custom Window")
+```powershell
+$form = New-Object System.Windows.Forms.Form
+$form.Width = 800                    #form width (in pixels)
+$form.Height = 600                   #form height (in pixels)
+$form.TopMost = $true                #makes the window appear in front of all other windows
+$form.MaximizeBox = $false           #disables the maximize button
+$form.FormBorderStyle = 'Fixed3D'    #Fixed3D prevents the window from being resized
+$form.text = "PowerShell Workshop"   #the name to display in the title bar
+$form.StartPosition = 'CenterScreen' #where the window will appear
+$form.BackColor = "#1A1A1A"          #can also use names, such as "black"
 
+$imagePath = "c:\Users\s524409\Desktop\powershellTutorial\background.jpg"
+$Image = [system.drawing.image]::FromFile($imagePath)
+$form.BackgroundImage = $Image
+$form.BackgroundImageLayout = "Stretch"
+
+Function newButton($locX, $locY, $sizeW, $sizeH, $label, $onClick) { 
+    $Button = New-Object System.Windows.Forms.Button
+    $Button.Location = New-Object System.Drawing.Point($locX, $locY) 
+    $Button.Width = $sizeW ; $Button.Height = $sizeH
+    $Button.Text = $label
+    $Button.BackColor = 'white'
+    $Button.Add_Click($onClick)
+    return $Button
+}
+
+$button1 = newButton 30 30 90 40 'Hello!' { 
+    Write-Host "Hello, World!"
+} ; $form.Controls.Add($button1) 
+
+$form.ShowDialog()
+```
 And our window should look something like this:
 
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/window_with_button.PNG "Custom Window")
@@ -137,10 +167,13 @@ $form.Controls.Add($textBox)
 ```
 
 ### Linking Buttons and Text Fields
-Let's do something useful with the objects on our screen. I'm going to turn mine into a base converter. First let's relocate and rename our objects. The code for my button and text box is now this:
+Let's do something useful with the objects on our screen. I'm going to turn mine into a base converter. First let's relocate and rename our objects, and add another button. The code for my buttons and text box is now this:
 ```powershell
-$button1 = newButton 320 100 90 40 'Convert' { 
+$button1 = newButton 265 100 90 40 'To ASCII' { 
 } ; $form.Controls.Add($button1) 
+
+$button2 = newButton 375 100 90 40 'To Base-64' { 
+} ; $form.Controls.Add($button2) 
 
 $textBox = New-Object System.Windows.Forms.TextBox
 $textBox.Location = New-Object System.Drawing.Point(265, 150)
@@ -151,4 +184,47 @@ And my window now looks like this:
 
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/textbox_and_button.PNG "Custom Window")
 
+When my button is clicked, I want it convert between base-64 encoding and plain text. In the code block for the button's click, we will make a reference to the text box. Here is the final code for the entire project:
+```powershell
+$form = New-Object System.Windows.Forms.Form
+$form.Width = 800                    #form width (in pixels)
+$form.Height = 600                   #form height (in pixels)
+$form.TopMost = $true                #makes the window appear in front of all other windows
+$form.MaximizeBox = $false           #disables the maximize button
+$form.FormBorderStyle = 'Fixed3D'    #Fixed3D prevents the window from being resized
+$form.text = "PowerShell Workshop"   #the name to display in the title bar
+$form.StartPosition = 'CenterScreen' #where the window will appear
+$form.BackColor = "#1A1A1A"          #can also use names, such as "black"
 
+$imagePath = "c:\Users\s524409\Desktop\powershellTutorial\background.jpg"
+$Image = [system.drawing.image]::FromFile($imagePath)
+$form.BackgroundImage = $Image
+$form.BackgroundImageLayout = "Stretch"
+
+Function newButton($locX, $locY, $sizeW, $sizeH, $label, $onClick) { 
+    $Button = New-Object System.Windows.Forms.Button
+    $Button.Location = New-Object System.Drawing.Point($locX, $locY) 
+    $Button.Width = $sizeW ; $Button.Height = $sizeH
+    $Button.Text = $label
+    $Button.BackColor = 'white'
+    $Button.Add_Click($onClick)
+    return $Button
+}
+
+$button1 = newButton 265 100 90 40 'To ASCII' { 
+    $textBox.Text = -join[char[]][System.Convert]::FromBase64String($textBox.Text)
+} ; $form.Controls.Add($button1) 
+
+$button2 = newButton 375 100 90 40 'To Base-64' { 
+    $textBox.Text = [System.Convert]::ToBase64String([char[]]$textBox.Text)
+} ; $form.Controls.Add($button2) 
+
+$textBox = New-Object System.Windows.Forms.TextBox
+$textBox.Location = New-Object System.Drawing.Point(265, 150)
+$textBox.Width = 200
+$form.Controls.Add($textBox)
+
+$form.ShowDialog()
+```
+
+The end.
