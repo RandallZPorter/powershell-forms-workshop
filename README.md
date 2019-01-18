@@ -32,14 +32,24 @@ Now we can add some additional code to modify how our window will look. Currentl
 
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/first_window.PNG "The default window")
 
-Some things we may way to customize about our window include:
+Some simple things we may way to customize about our window include:
 - Default size
 - Default location
-- Background color
-- Background image
-- Can it be resized or moved
+- Background color or image
 - Window Title
-- Enable or disable "minimize," "maximize," and "close" buttons 
+
+The following code will create an 800x600 pixel window, centered in the screen, with the title "PowerShell Workshop," and the same background color as this page.
+```powershell
+$form = New-Object System.Windows.Forms.Form
+$form.Size = New-Object System.Drawing.Size(800,600)  
+$form.text = "PowerShell Workshop"
+$form.StartPosition = 'CenterScreen'
+$form.BackColor = "#1A1A1A" #Color names work too, including "black" and many other common colors
+
+[void] $form.ShowDialog()
+```
+These are just a few of the customization options available. You can make your window look however you want. Mine currently looks like this:
+![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/custom_window.PNG "Custom Window")
 
 ## 3. Adding Clickable Objects
 
