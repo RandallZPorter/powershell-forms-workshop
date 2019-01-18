@@ -5,8 +5,7 @@ A short workshop to demonstrate the use of Windows forms with PowerShell
 This tutorial will cover the following topics:
 1. Setting up an environment
 1. Displaying an application window
-1. Adding clickable objects
-1. Linking objects to scripted events
+1. Adding clickable objects and events
 
 ## 1. Setting up an Environment
 We will be doing this development in the Powershell Integrated Scripting Environment (ISE). The easiest way to get to it is by doing a start menu search for "powershell," then clicking on the "PowerShell ISE" result:
@@ -29,6 +28,8 @@ The first line of code will create an instance of a Windows Form, which can be d
 $form = New-Object System.Windows.Forms.Form
 [void] $form.ShowDialog()
 ```
+$form.ShowDialog() is going to be the last line of our program throughout this workshop. Any code we add is going to go above it.
+
 ### Customizing
 Now we can add some additional code to modify how our window will look. Currently it should look something like this:
 
@@ -71,10 +72,60 @@ I specified a Matrix-like image for my background. Now my window looks like this
 
 Once you are happy with how your window looks, we can move on to learning how to add buttons, fields, and other things.
 
+
 ## 3. Adding Clickable Objects
+There are several kinds of objects we can add to our window. Let's talk about them one-by-one.
 
-## 4. Linking Objects to Scripted Events
+### Buttons
+We will look at buttons first. Every button has a few attributes. These are the most important:
+- Size (Length and width)
+- Label
+- Position (Measured in pixels from the top-left corner of the window)
+- Color
 
+Let's add a button in the top left corner of our screen. First, we need to specify some functionality for our button. For our first button, let's make it print "Hello, World!" when clicked. Of course, you can make it do whatever you want.
+```powershell
+function onClick1 {
+    Write-Host "Hello, World!"
+}
+```
+Now we can make the button itself:
+```powershell
+$button1 = New-Object System.Windows.Forms.Button 
+$button1.Location = New-Object System.Drawing.Size(30,30) 
+$button1.Size = New-Object System.Drawing.Size(90,40) 
+$button1.Text = "Hello!" 
+$button1.BackColor = 'white'
+```
+Now we need to bind the function, and attach our new button to our window:
+```powershell
+$button1.Add_Click({onClick1}) 
+$form.Controls.Add($button1) 
+```
+That was pretty tedious just to create one button. The following function can be used as a constructor to make this easier:
+```powershell
+Function newButton($locX, $locY, $sizeW, $sizeH, $label, $onClick) { 
+    $Button = New-Object System.Windows.Forms.Button
+    $Button.Location = New-Object System.Drawing.Point($locX, $locY) 
+    $Button.Width = $sizeW ; $Button.Height = $sizeH
+    $Button.Text = $label
+    $Button.BackColor = 'white'
+    $Button.Add_Click($onClick)
+    return $Button
+}
+```
+With this function, we can make our buttons much more easily. Let's rewrite our original button using this new function:
+```powershell
+$button1 = newButton 30 30 90 40 'Hello!' { 
+    Write-Host "Hello, World!"
+} ; $form.Controls.Add($button1) 
+```
+Our code now looks like this:
 
+![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/code.PNG "Custom Window")
+
+And our window should look something like this:
+
+![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/window_with_button.PNG "Custom Window")
 
 
