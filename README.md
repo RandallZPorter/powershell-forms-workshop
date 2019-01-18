@@ -19,6 +19,8 @@ You may want to save your file before you start working. This will protect it fr
 
 An important note: PowerShell has a system of "Execution Policies" that behave strangely sometimes. If your code does not run, you may need to adjust your execution policy.
 
+
+
 ## 2. Displaying an Application Window
 
 ### Creating
@@ -66,6 +68,8 @@ $form.BackgroundImageLayout = "Stretch"
 I specified a Matrix-like image for my background. Now my window looks like this:
 
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/custom_background.PNG "Custom Window")
+
+Once you are happy with how your window looks, we can move on to learning how to add buttons, fields, and other things.
 
 ## 3. Adding Clickable Objects
 
