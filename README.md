@@ -167,7 +167,7 @@ $form.Controls.Add($textBox)
 ```
 
 ### Linking Buttons and Text Fields
-Let's do something useful with the objects on our screen. I'm going to turn mine into a base converter. First let's relocate and rename our objects, and add another button. The code for my buttons and text box is now this:
+Let's do something useful with the objects on our screen. I'm going to turn mine into an encoder. First let's relocate and rename our objects, and add another button. The code for my buttons and text box is now this:
 ```powershell
 $button1 = newButton 265 100 90 40 'To ASCII' { 
 } ; $form.Controls.Add($button1) 
@@ -184,7 +184,7 @@ And my window now looks like this:
 
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/textbox_and_button.PNG "Custom Window")
 
-When my button is clicked, I want it convert between base-64 encoding and plain text. In the code block for the button's click, we will make a reference to the text box. Here is the final code for the entire project:
+When my button is clicked, I want it to convert between base-64 encoding and plain text. In the code block for the button's click, we will make a reference to the text box. Here is the final code for the entire project:
 ```powershell
 $form = New-Object System.Windows.Forms.Form
 $form.Width = 800                    #form width (in pixels)
