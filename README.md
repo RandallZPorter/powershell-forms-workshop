@@ -182,9 +182,9 @@ $form.Controls.Add($textBox)
 ```
 And my window now looks like this:
 
-![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/textbox_and_button.PNG "Custom Window")
+![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/final_window.PNG "Custom Window")
 
-When my button is clicked, I want it to convert between base-64 encoding and plain text. In the code block for the button's click, we will make a reference to the text box. Here is the final code for the entire project:
+When my button is clicked, I want it to convert between base-64 encoding and plain text. In the code block for each button's click, we will pull the text from the text box, convert it, and set that as the new text. Here is the final code for the entire project:
 ```powershell
 $form = New-Object System.Windows.Forms.Form
 $form.Width = 800                    #form width (in pixels)
