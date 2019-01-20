@@ -1,25 +1,6 @@
 # Workshop: Building Windows Forms with PowerShell
 A short workshop to demonstrate the use of Windows forms with PowerShell
 
-[Download the finished script here.](workshop.ps1){: .btn}
-
-
-<p style="line-height: 18px; font-size: 18px;  font-family: times;">
-Click "<i>Load samples</i>" to view and edit more JS samples.<br>
-<br>
-Labyrinth generated with JavaScript:<br><br>
-<script>
-for (var line=1; line<60; line++) {
-  for(var i=1;i<29;i++) {
-    var s = (Math.floor((Math.random()*2)%2)) ? "╱" : "╲";
-    document.write(s);
-  }
-  document.writeln("<br>");
-}
-</script>
-</p>
-
-
 ## Contents
 This tutorial will cover the following topics:
 1. Setting up an environment
@@ -250,5 +231,6 @@ $form.Controls.Add($textBox)
 
 $form.ShowDialog()
 ```
+[You can download the finished script here.](workshop.ps1){: .btn}
 
 The end.
