@@ -1,6 +1,8 @@
 # Workshop: Building Windows Forms with PowerShell
 A short workshop to demonstrate the use of Windows forms with PowerShell
 
+[Click me](http://www.google.com){: .btn}
+
 ## Contents
 This tutorial will cover the following topics:
 1. Setting up an environment
