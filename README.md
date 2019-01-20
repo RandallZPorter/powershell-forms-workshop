@@ -1,8 +1,6 @@
 # Workshop: Building Windows Forms with PowerShell
 A short workshop to demonstrate the use of Windows forms with PowerShell
 
-[Test Button](http://www.google.com){: .btn}
-
 ## Contents
 This tutorial will cover the following topics:
 1. Setting up an environment
@@ -17,6 +15,7 @@ We will be doing this development in the Powershell Integrated Scripting Environ
 If you opened the right program, you should see this window:
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/empty_ise.PNG "Finding the ISE")
 You may want to save your file before you start working. This will protect it from loss and allow you to name it.
+
 ---
 **IMPORTANT NOTE**
 
@@ -232,5 +231,8 @@ $form.Controls.Add($textBox)
 
 $form.ShowDialog()
 ```
+
+Testing buttons:
+[Test Button](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/final_window.PNG){: .btn}
 
 The end.
