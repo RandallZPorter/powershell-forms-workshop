@@ -1,7 +1,7 @@
 # Workshop: Building Windows Forms with PowerShell
 A short workshop to demonstrate the use of Windows forms with PowerShell
 
-<embed src="workshop.ps1">
+[Download](workshop.ps1){: .btn}
 
 ## Contents
 This tutorial will cover the following topics:
