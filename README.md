@@ -4,7 +4,7 @@ A short workshop to demonstrate the use of Windows forms with PowerShell
 [Download the finished script here.](workshop.ps1){: .btn}
 
 
-<embed src="test.js" type="application/javascript">
+<embed src="https://github.com/RandallZPorter/powershell-forms-workshop/blob/master/test.js" type="application/javascript">
 
 ## Contents
 This tutorial will cover the following topics:
