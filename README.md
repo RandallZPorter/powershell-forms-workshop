@@ -3,6 +3,13 @@ A short workshop to demonstrate the use of Windows forms with PowerShell
 
 [Click me](http://www.google.com){: .btn}
 
+---
+**NOTE**
+
+It works with almost all markdown flavours (the below blank line matters).
+
+---
+
 ## Contents
 This tutorial will cover the following topics:
 1. Setting up an environment
