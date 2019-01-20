@@ -232,7 +232,4 @@ $form.Controls.Add($textBox)
 $form.ShowDialog()
 ```
 
-Testing buttons:
-[Test Button](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/final_window.PNG){: .btn}
-
 The end.
