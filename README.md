@@ -1,14 +1,7 @@
 # Workshop: Building Windows Forms with PowerShell
 A short workshop to demonstrate the use of Windows forms with PowerShell
 
-[Click me](http://www.google.com){: .btn}
-
----
-**NOTE**
-
-It works with almost all markdown flavours (the below blank line matters).
-
----
+[Test Button](http://www.google.com){: .btn}
 
 ## Contents
 This tutorial will cover the following topics:
@@ -24,8 +17,12 @@ We will be doing this development in the Powershell Integrated Scripting Environ
 If you opened the right program, you should see this window:
 ![PowerShell ISE](https://github.com/RandallZPorter/powershell-forms-workshop/raw/master/empty_ise.PNG "Finding the ISE")
 You may want to save your file before you start working. This will protect it from loss and allow you to name it.
+---
+**IMPORTANT NOTE**
 
-An important note: PowerShell has a system of "Execution Policies" that behave strangely sometimes. If your code does not run, you may need to adjust your execution policy.
+PowerShell has a system of "Execution Policies" that behave strangely sometimes. If your code does not run, you may need to adjust your execution policy.
+
+---
 
 
 
